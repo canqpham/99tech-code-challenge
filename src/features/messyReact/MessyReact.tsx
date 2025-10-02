@@ -95,7 +95,7 @@ const MessyReact = () => {
         }}
         height={"1020px"}
         width="60%"
-        defaultLanguage="javascript"
+        defaultLanguage="typescript"
         defaultValue={code}
       />
     </div>

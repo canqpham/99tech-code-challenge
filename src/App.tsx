@@ -16,12 +16,7 @@ function App() {
       <nav className="p-4 border-b">
         <p className="text-xl text-center">Cang Pham's Test</p>
       </nav>
-      <Accordion
-        type="single"
-        collapsible
-        className="w-full"
-        defaultValue="item-1"
-      >
+      <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>Problem 1: Three ways to sum to n</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance px-4">
