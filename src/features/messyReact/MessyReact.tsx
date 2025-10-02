@@ -94,7 +94,7 @@ const MessyReact = () => {
           scrollBeyondLastLine: false,
         }}
         height={"1020px"}
-        width="60%"
+        width="100%"
         defaultLanguage="typescript"
         defaultValue={code}
       />
