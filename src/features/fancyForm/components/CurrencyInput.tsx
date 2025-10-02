@@ -59,7 +59,9 @@ export const CurrencyInput = memo(
                   <div className="flex items-center gap-2">
                     <div className="w-5 h-5">
                       <img
-                        src={`/tokens/${curr.code}.svg`}
+                        src={`${import.meta.env.BASE_URL}tokens/${
+                          curr.code
+                        }.svg`}
                         alt={curr.code}
                         className="w-5 h-5"
                         onError={(e) => {
