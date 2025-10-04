@@ -127,6 +127,15 @@ const sortedBalances = useMemo(() => {
 #### **Original - Multiple Function Calls**
 
 ```typescript
+.filter((balance: WalletBalance) => {
+  const balancePriority = getPriority(balance.blockchain);
+  if (lhsPriority > -99) { // lhsPriority is undefined!
+      if (balance.amount <= 0) {
+        return true; // Returns true for zero amounts!
+      }
+  }
+  return false
+})
 .sort((lhs: WalletBalance, rhs: WalletBalance) => {
   const leftPriority = getPriority(lhs.blockchain);   // Function call #1
   const rightPriority = getPriority(rhs.blockchain);  // Function call #2
@@ -138,7 +147,7 @@ const sortedBalances = useMemo(() => {
 });
 ```
 
-**Performance Issue**: For 1000 items = ~20,000 function calls during sorting!
+**Performance Issue**: For 1000 items = ~21,000 function calls during sorting and filtering!
 
 #### **Fixed - Pre-computed Priorities**
 

@@ -164,7 +164,7 @@ npm run preview
 3. Compare with optimized version
 4. Read detailed analysis in [CODE_REFACTORING_ANALYSIS.md](./CODE_REFACTORING_ANALYSIS.md)
 
-## 🌐 API Integration
+## API Integration
 
 ### Exchange Rates API
 
