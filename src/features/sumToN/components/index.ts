@@ -1,1 +1,1 @@
-export { MethodDemo } from "./MethodDemo";
+export { default as MethodDemo } from "./MethodDemo";

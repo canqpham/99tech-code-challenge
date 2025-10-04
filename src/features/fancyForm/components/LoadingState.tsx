@@ -4,7 +4,7 @@ import { Loader2 } from "lucide-react";
 /**
  * Loading state component displayed while fetching currency data
  */
-export const LoadingState = () => {
+const LoadingState = () => {
   return (
     <div className="w-full max-w-md mx-auto">
       <Card className="shadow-lg">
@@ -20,3 +20,5 @@ export const LoadingState = () => {
     </div>
   );
 };
+
+export default LoadingState;

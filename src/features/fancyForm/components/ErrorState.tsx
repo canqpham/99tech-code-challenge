@@ -4,7 +4,7 @@ import type { ErrorStateProps } from "../types";
 /**
  * Error state component displayed when currency data fetch fails
  */
-export const ErrorState = ({ error }: ErrorStateProps) => {
+const ErrorState = ({ error }: ErrorStateProps) => {
   return (
     <div className="w-full max-w-md mx-auto">
       <Card className="shadow-lg border-red-200">
@@ -18,3 +18,5 @@ export const ErrorState = ({ error }: ErrorStateProps) => {
     </div>
   );
 };
+
+export default ErrorState;

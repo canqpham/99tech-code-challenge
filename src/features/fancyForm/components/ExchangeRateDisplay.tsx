@@ -4,26 +4,24 @@ import type { ExchangeRateDisplayProps } from "../types";
 /**
  * Display current exchange rate between two currencies
  */
-export const ExchangeRateDisplay = memo(
-  ({
-    fromCurrency,
-    toCurrency,
-    fromPrice,
-    toPrice,
-  }: ExchangeRateDisplayProps) => {
-    const rate = fromPrice / toPrice;
+const ExchangeRateDisplay = ({
+  fromCurrency,
+  toCurrency,
+  fromPrice,
+  toPrice,
+}: ExchangeRateDisplayProps) => {
+  const rate = fromPrice / toPrice;
 
-    return (
-      <div className="pt-4 border-t">
-        <p className="text-sm text-muted-foreground text-center">
-          1 {fromCurrency} = {rate.toFixed(6)} {toCurrency}
-        </p>
-        <p className="text-xs text-muted-foreground text-center mt-1">
-          Exchange rate is indicative
-        </p>
-      </div>
-    );
-  }
-);
+  return (
+    <div className="pt-4 border-t">
+      <p className="text-sm text-muted-foreground text-center">
+        1 {fromCurrency} = {rate.toFixed(6)} {toCurrency}
+      </p>
+      <p className="text-xs text-muted-foreground text-center mt-1">
+        Exchange rate is indicative
+      </p>
+    </div>
+  );
+};
 
-ExchangeRateDisplay.displayName = "ExchangeRateDisplay";
+export default memo(ExchangeRateDisplay);

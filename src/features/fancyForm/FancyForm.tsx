@@ -45,16 +45,6 @@ const FancyForm = () => {
     handleSwap,
   } = useCurrencyConverter({ currencies });
 
-  // Show loading state while fetching currencies
-  if (loading) {
-    return <LoadingState />;
-  }
-
-  // Show error state if fetch failed
-  if (fetchError) {
-    return <ErrorState error={fetchError} />;
-  }
-
   // Handle swap with animation
   const handleSwapWithAnimation = () => {
     setIsSwapping(true);
@@ -75,6 +65,16 @@ const FancyForm = () => {
       setIsSwapSuccess("");
     }, 5000);
   };
+
+  // Show loading state while fetching currencies
+  if (loading) {
+    return <LoadingState />;
+  }
+
+  // Show error state if fetch failed
+  if (fetchError) {
+    return <ErrorState error={fetchError} />;
+  }
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -107,12 +107,12 @@ const FancyForm = () => {
               <CurrencyInput
                 id="from-amount"
                 label={isFlipped ? "To" : "From"}
-                amount={fromAmount}
-                currencyDisabled={toCurrency}
-                currency={fromCurrency}
+                amount={isFlipped ? toAmount : fromAmount}
+                currencyDisabled={isFlipped ? fromCurrency : toCurrency}
+                currency={isFlipped ? toCurrency : fromCurrency}
                 currencies={currencies}
-                onAmountChange={handleAmountChange}
-                onCurrencyChange={setFromCurrency}
+                onAmountChange={isFlipped ? undefined : handleAmountChange}
+                onCurrencyChange={isFlipped ? setToCurrency : setFromCurrency}
                 error={error}
                 readOnly={isFlipped}
               />
@@ -147,11 +147,12 @@ const FancyForm = () => {
               <CurrencyInput
                 id="to-amount"
                 label={isFlipped ? "From" : "To"}
-                amount={toAmount}
-                currencyDisabled={fromCurrency}
-                currency={toCurrency}
+                amount={isFlipped ? fromAmount : toAmount}
+                currencyDisabled={isFlipped ? toCurrency : fromCurrency}
+                currency={isFlipped ? fromCurrency : toCurrency}
                 currencies={currencies}
-                onCurrencyChange={setToCurrency}
+                onAmountChange={isFlipped ? handleAmountChange : undefined}
+                onCurrencyChange={isFlipped ? setFromCurrency : setToCurrency}
                 readOnly={!isFlipped}
               />
             </motion.div>

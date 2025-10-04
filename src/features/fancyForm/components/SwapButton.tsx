@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDownUp } from "lucide-react";
 import type { SwapButtonProps } from "../types";
@@ -6,7 +5,7 @@ import type { SwapButtonProps } from "../types";
 /**
  * Button to swap from/to currencies
  */
-export const SwapButton = memo(({ onClick }: SwapButtonProps) => {
+export const SwapButton = ({ onClick }: SwapButtonProps) => {
   return (
     <div className="flex justify-center">
       <Button
@@ -19,6 +18,6 @@ export const SwapButton = memo(({ onClick }: SwapButtonProps) => {
       </Button>
     </div>
   );
-});
+};
 
-SwapButton.displayName = "SwapButton";
+export default SwapButton;

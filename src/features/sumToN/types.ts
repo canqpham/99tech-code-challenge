@@ -6,7 +6,5 @@ export interface MethodDemoProps {
   title: string;
   code: string;
   editorHeight: string;
-  value: number;
-  result: number;
-  onValueChange: (value: number) => void;
+  sumToN: (n: number) => number;
 }

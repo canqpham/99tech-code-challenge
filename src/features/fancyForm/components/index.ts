@@ -1,5 +1,5 @@
-export { LoadingState } from "./LoadingState";
-export { ErrorState } from "./ErrorState";
-export { CurrencyInput } from "./CurrencyInput";
-export { ExchangeRateDisplay } from "./ExchangeRateDisplay";
-export { SwapButton } from "./SwapButton";
+export { default as LoadingState } from "./LoadingState";
+export { default as ErrorState } from "./ErrorState";
+export { default as CurrencyInput } from "./CurrencyInput";
+export { default as ExchangeRateDisplay } from "./ExchangeRateDisplay";
+export { default as SwapButton } from "./SwapButton";
