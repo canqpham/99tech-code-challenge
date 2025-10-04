@@ -83,7 +83,7 @@ const MessyReact = () => {
           minimap: { enabled: false },
           scrollBeyondLastLine: false,
         }}
-        height={"1020px"}
+        height={"820px"}
         width="100%"
         defaultLanguage="javascript"
         defaultValue={code}
