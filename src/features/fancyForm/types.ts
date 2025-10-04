@@ -63,6 +63,7 @@ export interface ExchangeRateDisplayProps {
  */
 export interface SwapButtonProps {
   onClick: () => void;
+  disabled?: boolean;
 }
 
 /**

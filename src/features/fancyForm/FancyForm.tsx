@@ -124,7 +124,10 @@ const FancyForm = () => {
                 animate={{ rotate: isFlipped ? 180 : 0 }}
                 transition={{ duration: 0.5 }}
               >
-                <SwapButton onClick={handleSwapWithAnimation} />
+                <SwapButton
+                  disabled={isSwapping || isConfirming}
+                  onClick={handleSwapWithAnimation}
+                />
               </motion.div>
             </div>
 
@@ -158,7 +161,7 @@ const FancyForm = () => {
             </motion.div>
 
             <Button
-              disabled={isSwapping}
+              disabled={isConfirming || isSwapping}
               onClick={confirmSwap}
               className="cursor-pointer"
             >
