@@ -1,75 +1,227 @@
-# React + TypeScript + Vite
+# 99Tech Code Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Deploy Status](https://github.com/canqpham/99tech-code-challenge/workflows/Deploy%20Vite%20App%20to%20GitHub%20Pages/badge.svg)](https://github.com/canqpham/99tech-code-challenge/actions)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://canqpham.github.io/99tech-code-challenge/)
 
-Currently, two official plugins are available:
+A comprehensive React TypeScript project showcasing solutions to three technical challenges, built with modern web development best practices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+### **Problem 1: Three Ways to Sum to N**
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **O(1) Mathematical Formula** - Instant calculation using arithmetic series
+- **O(n) Recursion** - Functional recursive approach
+- **O(n) Iteration** - Traditional loop-based solution
+- Real-time performance comparison
 
-Note: This will impact Vite dev & build performances.
+### **Problem 2: Currency Swap Form**
 
-## Expanding the ESLint configuration
+- **Real-time Exchange Rates** - Live data from Fawaz Ahmed API
+- **Animated UI** - Smooth swap animations with Framer Motion
+- **Optimized Performance** - React.memo and useMemo implementations
+- **Responsive Design** - Mobile-first responsive layout
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### **Problem 3: Code Review & Refactoring**
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Interactive Code Analysis** - Monaco Editor integration
+- **Performance Improvements** - 95% reduction in computational overhead
+- **Best Practice Implementation** - TypeScript and React patterns
+- **Detailed Documentation** - Comprehensive refactoring analysis
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Technology Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **Frontend:** React 19, TypeScript, Vite
+- **Styling:** TailwindCSS 4, shadcn/ui components
+- **Animation:** Framer Motion
+- **Code Editor:** Monaco Editor
+- **Icons:** Lucide React
+- **Build Tool:** Vite 7
+- **Deployment:** GitHub Actions + GitHub Pages
+
+## Prerequisites
+
+Before setting up the project, ensure you have:
+
+- **Node.js** >= 18.0.0
+- **npm** >= 8.0.0 (or **yarn** >= 1.22.0)
+- **Git** for version control
+
+### Check Your Versions
+
+```bash
+node --version   # Should be >= 18.0.0
+npm --version    # Should be >= 8.0.0
+git --version    # Any recent version
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ⚡ Quick Start
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Clone the Repository
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/canqpham/99tech-code-challenge.git
+cd 99tech-code-challenge
 ```
+
+### 2. Install Dependencies
+
+```bash
+# Using npm (recommended)
+npm install
+
+# Or using yarn
+yarn install
+```
+
+### 3. Start Development Server
+
+```bash
+# Using npm
+npm run dev
+
+# Or using yarn
+yarn dev
+```
+
+### 4. Open in Browser
+
+```bash
+# Development server will start at:
+http://localhost:5173
+```
+
+## Available Scripts
+
+| Script    | Description              | Usage             |
+| --------- | ------------------------ | ----------------- |
+| `dev`     | Start development server | `npm run dev`     |
+| `build`   | Build for production     | `npm run build`   |
+| `preview` | Preview production build | `npm run preview` |
+| `lint`    | Run ESLint checks        | `npm run lint`    |
+
+### Development Workflow
+
+```bash
+# Start development
+npm run dev
+
+# In another terminal, check for linting issues
+npm run lint
+
+# Build and test production version
+npm run build
+npm run preview
+```
+
+## 📁 Project Structure
+
+```
+99tech-code-challenge/
+├── 📂 .github/
+│   └── workflows/           # GitHub Actions deployment
+├── 📂 public/              # Static assets
+├── 📂 src/
+│   ├── 📂 components/      # Reusable UI components
+│   │   └── ui/            # shadcn/ui components
+│   ├── 📂 features/       # Feature-specific components
+│   │   ├── fancyForm/     # Currency swap functionality
+│   │   ├── messyReact/    # Code review & refactoring
+│   │   └── sumToN/        # Mathematical algorithms
+│   ├── 📂 lib/            # Utility functions
+│   ├── App.tsx            # Main application component
+│   └── main.tsx           # Application entry point
+├── 📄 CODE_REFACTORING_ANALYSIS.md  # Detailed code analysis
+├── 📄 package.json                  # Dependencies and scripts
+├── 📄 tailwind.config.js           # TailwindCSS configuration
+├── 📄 tsconfig.json                # TypeScript configuration
+└── 📄 vite.config.ts               # Vite build configuration
+```
+
+## How to Use
+
+### **1. Sum to N Calculator**
+
+1. Navigate to the "Sum to N" section
+2. Enter any positive integer
+3. Compare performance across three algorithms:
+   - Mathematical formula (fastest)
+   - Recursion (functional approach)
+   - Iteration (traditional loops)
+
+### **2. Currency Swap Form**
+
+1. Go to the "Currency Swap" section
+2. Enter amount in the "From" field
+3. Select currencies from dropdowns
+4. Watch real-time conversion
+5. Click swap button for animated currency exchange
+6. Confirm the swap to complete transaction
+
+### **3. Code Review Analysis**
+
+1. Visit the "Messy React" section
+2. Review the original buggy code
+3. Compare with optimized version
+4. Read detailed analysis in [CODE_REFACTORING_ANALYSIS.md](./CODE_REFACTORING_ANALYSIS.md)
+
+## 🌐 API Integration
+
+### Exchange Rates API
+
+- **Endpoint:** `https://interview.switcheo.com/prices.json`
+- **Rate Limit:** None (free tier)
+
+## Configuration
+
+### Environment Variables
+
+Create a `.env` file for local development:
+
+```bash
+VITE_CURRENCY_API_URL=https://interview.switcheo.com/prices.json
+```
+
+### Vite Configuration
+
+Key settings in `vite.config.ts`:
+
+```typescript
+export default defineConfig({
+  base: "/99tech-code-challenge/", // GitHub Pages base path
+  plugins: [react()],
+  // Additional optimizations...
+});
+```
+
+## 🚀 Deployment
+
+### Automatic Deployment (GitHub Pages)
+
+This project automatically deploys to GitHub Pages when you push to `main` branch.
+
+**Live Demo:** [https://canqpham.github.io/99tech-code-challenge/](https://canqpham.github.io/99tech-code-challenge/)
+
+### Manual Deployment
+
+```bash
+# Build the project
+npm run build
+
+# Deploy the dist folder to your hosting provider
+```
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+## 📄 License
+
+This project is created for the 99Tech code challenge and is available under the MIT License.
+
+## 👤 Author
+
+**Can Pham**
+
+- GitHub: [@canqpham](https://github.com/canqpham)
+
+---
+
+**⭐ If you found this project helpful, please consider giving it a star!**

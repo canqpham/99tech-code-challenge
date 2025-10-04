@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import type { Currency, PriceData } from "../types";
 import { processCurrencyData } from "../utils";
 
-const API_URL = "https://interview.switcheo.com/prices.json";
+const API_URL = import.meta.env.VITE_CURRENCY_API_URL;
 
 /**
  * Custom hook to fetch and manage currency data from API

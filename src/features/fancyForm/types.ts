@@ -38,6 +38,7 @@ export interface CurrencyInputProps {
   onCurrencyChange: (value: string) => void;
   error?: string;
   readOnly?: boolean;
+  currencyDisabled?: string;
 }
 
 /**

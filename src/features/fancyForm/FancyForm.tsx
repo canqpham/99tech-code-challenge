@@ -16,12 +16,16 @@ import {
   SwapButton,
   ExchangeRateDisplay,
 } from "./components";
+import { Button } from "@/components/ui/button";
 
 /**
  * Currency swap form
  */
 const FancyForm = () => {
   const [isSwapping, setIsSwapping] = useState(false);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [isConfirming, setIsConfirming] = useState(false);
+  const [isSwapSuccess, setIsSwapSuccess] = useState<string>("");
 
   // Fetch currency data from API
   const { currencies, loading, error: fetchError } = useCurrencyData();
@@ -56,8 +60,20 @@ const FancyForm = () => {
     setIsSwapping(true);
     setTimeout(() => {
       handleSwap();
-      setTimeout(() => setIsSwapping(false), 300);
+      setIsFlipped(!isFlipped);
+      setIsSwapping(false);
     }, 300);
+  };
+
+  const confirmSwap = () => {
+    setIsConfirming(true);
+    setTimeout(() => {
+      setIsSwapSuccess(toAmount);
+      setIsConfirming(false);
+    }, 1000);
+    setTimeout(() => {
+      setIsSwapSuccess("");
+    }, 5000);
   };
 
   return (
@@ -71,37 +87,42 @@ const FancyForm = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="relative">
+          <div className="relative flex flex-col gap-6">
             {/* From Currency Input */}
             <motion.div
-              key="from-input"
+              layout
+              initial={false}
               animate={{
-                y: isSwapping ? 100 : 0,
-                opacity: isSwapping ? 0.1 : 1,
+                y: isFlipped ? 140 : 0,
+                opacity: isSwapping ? 0.7 : 1,
               }}
               transition={{
                 type: "spring",
-                stiffness: 300,
-                damping: 30,
+                stiffness: 200,
+                damping: 25,
+                opacity: { duration: 0.2 },
               }}
+              className=" w-full"
             >
               <CurrencyInput
                 id="from-amount"
-                label="From"
+                label={isFlipped ? "To" : "From"}
                 amount={fromAmount}
+                currencyDisabled={toCurrency}
                 currency={fromCurrency}
                 currencies={currencies}
                 onAmountChange={handleAmountChange}
                 onCurrencyChange={setFromCurrency}
                 error={error}
+                readOnly={isFlipped}
               />
             </motion.div>
 
             {/* Swap Button */}
-            <div className="flex justify-center my-6 relative z-10">
+            <div className="">
               <motion.div
-                animate={{ rotate: isSwapping ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
+                animate={{ rotate: isFlipped ? 180 : 0 }}
+                transition={{ duration: 0.5 }}
               >
                 <SwapButton onClick={handleSwapWithAnimation} />
               </motion.div>
@@ -109,27 +130,39 @@ const FancyForm = () => {
 
             {/* To Currency Input */}
             <motion.div
-              key="to-input"
+              layout
+              initial={false}
               animate={{
-                y: isSwapping ? -100 : 0,
-                opacity: isSwapping ? 0.1 : 1,
+                y: isFlipped ? -140 : 0,
+                opacity: isSwapping ? 0.7 : 1,
               }}
               transition={{
                 type: "spring",
-                stiffness: 300,
-                damping: 30,
+                stiffness: 200,
+                damping: 25,
+                opacity: { duration: 0.2 },
               }}
+              className=""
             >
               <CurrencyInput
                 id="to-amount"
-                label="To"
+                label={isFlipped ? "From" : "To"}
                 amount={toAmount}
+                currencyDisabled={fromCurrency}
                 currency={toCurrency}
                 currencies={currencies}
                 onCurrencyChange={setToCurrency}
-                readOnly
+                readOnly={!isFlipped}
               />
             </motion.div>
+
+            <Button
+              disabled={isSwapping}
+              onClick={confirmSwap}
+              className="cursor-pointer"
+            >
+              {isConfirming ? "Swapping..." : "Confirm Swap"}
+            </Button>
           </div>
 
           {/* Exchange Rate Display */}
@@ -140,6 +173,17 @@ const FancyForm = () => {
               fromPrice={fromPrice}
               toPrice={toPrice}
             />
+          )}
+          {isSwapSuccess !== "" && (
+            <div className="flex flex-col items-center justify-center border border-green-500 p-4 bg-green-50 rounded-md">
+              <p className="text-lg font-semibold text-green-900">
+                Congratulations!
+              </p>
+              <p className="text-green-900">
+                You have swapped {fromAmount} {fromCurrency} to {isSwapSuccess}{" "}
+                {toCurrency}
+              </p>
+            </div>
           )}
         </CardContent>
       </Card>

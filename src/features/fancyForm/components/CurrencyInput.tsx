@@ -24,6 +24,7 @@ export const CurrencyInput = memo(
     onCurrencyChange,
     error,
     readOnly = false,
+    currencyDisabled = "",
   }: CurrencyInputProps) => {
     return (
       <div className="space-y-2">
@@ -53,9 +54,16 @@ export const CurrencyInput = memo(
             <SelectTrigger className="w-[140px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent
+              align="end"
+              className="relative min-w-[398px] overflow-y-auto"
+            >
               {currencies.map((curr) => (
-                <SelectItem key={curr.code} value={curr.code}>
+                <SelectItem
+                  key={curr.code}
+                  value={curr.code}
+                  disabled={curr.code === currencyDisabled}
+                >
                   <div className="flex items-center gap-2">
                     <div className="w-5 h-5">
                       <img
