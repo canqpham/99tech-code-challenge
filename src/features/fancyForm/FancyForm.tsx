@@ -18,6 +18,9 @@ import {
 } from "./components";
 import { Button } from "@/components/ui/button";
 
+const FROM_LABEL = "Amount to send";
+const TO_LABEL = "Amount to receive";
+
 /**
  * Currency swap form
  */
@@ -106,7 +109,7 @@ const FancyForm = () => {
             >
               <CurrencyInput
                 id="from-amount"
-                label={isFlipped ? "To" : "From"}
+                label={isFlipped ? FROM_LABEL : TO_LABEL}
                 amount={isFlipped ? toAmount : fromAmount}
                 currencyDisabled={isFlipped ? fromCurrency : toCurrency}
                 currency={isFlipped ? toCurrency : fromCurrency}
@@ -149,7 +152,7 @@ const FancyForm = () => {
             >
               <CurrencyInput
                 id="to-amount"
-                label={isFlipped ? "From" : "To"}
+                label={isFlipped ? TO_LABEL : FROM_LABEL}
                 amount={isFlipped ? fromAmount : toAmount}
                 currencyDisabled={isFlipped ? toCurrency : fromCurrency}
                 currency={isFlipped ? fromCurrency : toCurrency}
