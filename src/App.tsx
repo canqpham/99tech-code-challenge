@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/accordion";
 import { SumToN } from "./features/sumToN";
 import { FancyForm } from "./features/fancyForm";
+import { MarkdownViewer } from "./features/codeAnalysis";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs";
 import { MessyReact } from "./features/messyReact";
 
 function App() {
@@ -32,7 +34,18 @@ function App() {
         <AccordionItem value="item-3">
           <AccordionTrigger>Problem 3: Messy React</AccordionTrigger>
           <AccordionContent className="flex flex-col gap-4 text-balance px-4">
-            <MessyReact />
+            <Tabs defaultValue="item-3-1" className="w-full">
+              <TabsList>
+                <TabsTrigger value="item-3-1">Code Analysis</TabsTrigger>
+                <TabsTrigger value="item-3-2">Refactoring Code</TabsTrigger>
+              </TabsList>
+              <TabsContent value="item-3-1">
+                <MarkdownViewer url="CODE_REFACTORING_ANALYSIS.md" />
+              </TabsContent>
+              <TabsContent value="item-3-2">
+                <MessyReact />
+              </TabsContent>
+            </Tabs>
           </AccordionContent>
         </AccordionItem>
       </Accordion>

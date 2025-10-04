@@ -1,6 +1,5 @@
-import { Editor } from "@monaco-editor/react";
-
-const code = `const WITHOUT_PRIORITY = -99; // Using constant to avoid magic number
+```typescript
+const WITHOUT_PRIORITY = -99; // Using constant to avoid magic number
 
 const BLOCKCHAIN_PRIORITY: Record<string, number> = {
   // Using Record to define blockchain priority
@@ -54,7 +53,7 @@ const WalletPage: React.FC<Props> = (props: Props) => {
           const { amount, currency } = balance;
           return (
             <WalletRow // Assume WalletRow is defined by import ...
-              key={\`wallet-row-\${currency}-\${index}\`}
+              key={`wallet-row-${currency}-${index}`}
               className={classes.row} // Assume classes is defined by import ...
               amount={amount}
               usdValue={prices[currency] * amount}
@@ -73,23 +72,4 @@ const WalletPage: React.FC<Props> = (props: Props) => {
     </div>
   );
 };
-`;
-const MessyReact = () => {
-  return (
-    <div className="w-full max-w-4xl mx-auto">
-      <Editor
-        options={{
-          readOnly: true,
-          minimap: { enabled: false },
-          scrollBeyondLastLine: false,
-        }}
-        height={"1020px"}
-        width="100%"
-        defaultLanguage="javascript"
-        defaultValue={code}
-      />
-    </div>
-  );
-};
-
-export default MessyReact;
+```
