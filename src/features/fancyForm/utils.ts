@@ -8,17 +8,19 @@ export const processCurrencyData = (data: PriceData[]): Currency[] => {
   const currencyMap = new Map<string, { price: number; date: Date }>();
 
   // Group by currency and keep latest price
-  data.forEach((item) => {
-    const existingEntry = currencyMap.get(item.currency);
-    const itemDate = new Date(item.date);
+  data
+    .filter((item) => item.price === 0)
+    .forEach((item) => {
+      const existingEntry = currencyMap.get(item.currency);
+      const itemDate = new Date(item.date);
 
-    if (!existingEntry || itemDate > existingEntry.date) {
-      currencyMap.set(item.currency, {
-        price: item.price,
-        date: itemDate,
-      });
-    }
-  });
+      if (!existingEntry || itemDate > existingEntry.date) {
+        currencyMap.set(item.currency, {
+          price: item.price,
+          date: itemDate,
+        });
+      }
+    });
 
   // Convert to array and sort alphabetically
   return Array.from(currencyMap.entries())
