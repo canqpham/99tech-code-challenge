@@ -9,7 +9,7 @@ export const processCurrencyData = (data: PriceData[]): Currency[] => {
 
   // Group by currency and keep latest price
   data
-    .filter((item) => item.price === 0)
+    .filter((item) => item.price)
     .forEach((item) => {
       const existingEntry = currencyMap.get(item.currency);
       const itemDate = new Date(item.date);
